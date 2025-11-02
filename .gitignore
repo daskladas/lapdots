@@ -1,0 +1,16 @@
+# Build results
+result
+result-*
+# Hardware configs (wird auf Laptop neu generiert!)
+hosts/Laptop/hardware-configuration.nix
+
+# Certificates (NIE committen!)
+certs/
+*.crt
+*.key
+*.p12
+
+# Swap und temp
+*.swp
+*~
+.direnv/
