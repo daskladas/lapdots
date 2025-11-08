@@ -1,13 +1,29 @@
-<div align="center">
-
-# daskladas's NixOS Dotfiles
-
-_Declarative NixOS configuration with Flakes & Home Manager_
-
-[![NixOS](https://img.shields.io/badge/NixOS-Unstable-blue.svg?style=flat&logo=nixos&logoColor=white)](https://nixos.org)
-[![Hyprland](https://img.shields.io/badge/WM-Hyprland-teal.svg?style=flat)](https://hyprland.org)
-
-</div>
+<h1 align="center">
+   <img src="assets/logo/nix-snowflake.svg" width="100px" /> 
+   <br>
+      daskladas's NixOS Configuration
+   <br>
+      <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/palette/macchiato.png" width="600px" /> <br>
+   <div align="center">
+   <div align="center">
+      <p></p>
+      <div align="center">
+         <a href="https://shit.homeserveris.online:8443/daskladas/nix-dots/stargazers">
+            <img src="https://img.shields.io/github/stars/daskladas/nix-dots?color=F5BDE6&labelColor=303446&style=for-the-badge&logo=starship&logoColor=F5BDE6">
+         </a>
+         <a href="https://shit.homeserveris.online:8443/daskladas/nix-dots/forks">
+            <img src="https://img.shields.io/github/forks/daskladas/nix-dots?color=C6A0F6&labelColor=303446&style=for-the-badge&logo=git&logoColor=C6A0F6">
+         </a>
+         <a href="https://nixos.org">
+            <img src="https://img.shields.io/badge/NixOS-Unstable-blue?style=for-the-badge&logo=NixOS&logoColor=91D7E3&label=NixOS&labelColor=303446&color=91D7E3">
+         </a>
+         <a href="https://hyprland.org">
+            <img src="https://img.shields.io/badge/WM-Hyprland-teal?style=for-the-badge&logo=hyprland&logoColor=white&labelColor=303446&color=89DCEB">
+         </a>
+      </div>
+      <br>
+   </div>
+</h1>
 
 ---
 
