@@ -65,8 +65,6 @@
     donpapi	      # Dump secrets using DPAPI
 
     # === MOBILE ===
-    apktool	      # Android APK reverse engineering
-    jadx	      # Dex to Java decompiler
     frida-tools       # Dynamic instrumentation toolkit
     apkleaks          # Scanning APK files for URIs, endpoints & secrets
 
@@ -121,7 +119,6 @@
     traitor                  # Automatic linux privilege escalator
 
     # === FORENSICS & DATA RECOVERY ===
-    autopsy           # Digital forensics platform (GUI for Sleuthkit)
     scalpel           # Fast file carving tool
     dc3dd	      # Patched dd with forensic features
     dcfldd	      # Enhanced dd for forensics

@@ -6,7 +6,6 @@
  pkgs.obs-studio
  pkgs.tree
  pkgs.teamviewer
- pkgs.rustdesk-flutter
  pkgs.conky
  pkgs.curl
  pkgs.wget

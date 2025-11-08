@@ -18,12 +18,6 @@ let
     pkgs.libgcc
     pkgs.gnumake
     pkgs.neovim
-    pkgs.android-tools
-    pkgs.android-studio-full
-    pkgs.android-studio-tools
-    pkgs.jdk8
-    pkgs.gradle
-    pkgs.devenv
     pkgs.gitkraken
     pkgs.nodejs_latest
     pkgs.nodePackages.prettier
