@@ -116,6 +116,8 @@ in
         #   new_is_master = true
         # }
 
+        $terminal = kitty
+
         # gestures {
         #   workspace_swipe = off
         # }
@@ -134,7 +136,7 @@ in
 
         # ---- Application Keybinds ---- #
         # Applications
-        bind = $mainMod, T, exec, wezterm
+        bind = $mainMod, T, exec, $terminal
         bind = $mainMod, C, killactive,
         bind = $mainMod, M, exit,
         bind = $mainMod, V, togglefloating,

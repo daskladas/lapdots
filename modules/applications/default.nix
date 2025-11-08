@@ -1,3 +1,5 @@
+{ lib, ... }:
+
 {
   imports = [
     ./pkgs
@@ -13,4 +15,14 @@
     ./wezterm.nix
     ./terminal-fun.nix
   ];
-}
+
+home-manager.sharedModules = [
+    (_: {
+      programs.kitty = {
+        enable = true;
+        settings = {
+          background_opacity = "0.50";  
+        };
+      };
+    })
+  ];}
