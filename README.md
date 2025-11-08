@@ -46,7 +46,12 @@
 
 ## ❄️ Showcase
 
-![Desktop Showcase](./docs/media/showcase.mp4)
+<p align="center">
+  <video src="./docs/media/showcase.mp4" controls loop muted width="800">
+    Your browser does not support the video tag.
+  </video>
+</p>
+
 ---
 
 ## 🚀 Installation
