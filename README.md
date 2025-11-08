@@ -8,12 +8,6 @@
    <div align="center">
       <p></p>
       <div align="center">
-         <a href="https://shit.homeserveris.online:8443/daskladas/nix-dots/stargazers">
-            <img src="https://img.shields.io/github/stars/daskladas/nix-dots?color=F5BDE6&labelColor=303446&style=for-the-badge&logo=starship&logoColor=F5BDE6">
-         </a>
-         <a href="https://shit.homeserveris.online:8443/daskladas/nix-dots/forks">
-            <img src="https://img.shields.io/github/forks/daskladas/nix-dots?color=C6A0F6&labelColor=303446&style=for-the-badge&logo=git&logoColor=C6A0F6">
-         </a>
          <a href="https://nixos.org">
             <img src="https://img.shields.io/badge/NixOS-Unstable-blue?style=for-the-badge&logo=NixOS&logoColor=91D7E3&label=NixOS&labelColor=303446&color=91D7E3">
          </a>
