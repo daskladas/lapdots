@@ -44,7 +44,7 @@
 
 ---
 
-## ❄️  hShowcase
+## ❄️  hhowcase
 
 ![Desktop Showcase](./docs/media/showcase.mp4)
 ---
