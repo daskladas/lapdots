@@ -17,6 +17,15 @@ let
     wineWowPackages.stable
   ];
 
+openSourceGames = with pkgs; [
+  xonotic
+  mindustry
+  luanti
+  teeworlds
+  hedgewars
+  superTuxKart
+  zeroad-unwrapped
+];
 in
 {
   options.gaming = {
@@ -33,7 +42,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = defaultPackages ++ cfg.optionalPackages;
+    environment.systemPackages = defaultPackages ++ cfg.optionalPackages ++ openSourceGames;    
 
     programs = {
       steam = {
