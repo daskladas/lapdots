@@ -53,7 +53,6 @@
           Locked = true;
           Value = true;
         };
-        OverrideFirstRunPage = "https://start.v3rm1n.dev";
         OverridePostUpdatePage = "";
         SearchBar = "unified";
 
