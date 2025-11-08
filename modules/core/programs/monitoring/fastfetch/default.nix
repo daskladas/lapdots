@@ -1,10 +1,10 @@
 { username, pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [ fastfetch ];
+  environment.systemPackages = with pkgs; [ neofetch ];
 
   home-manager.users.${username} = _: {
     home.file = {
-      ".config/fastfetch/config.jsonc".source = ./config.jsonc;
+      ".config/neofetch/config.conf".source = ./neofetch-config.conf;
     };
   };
 }
