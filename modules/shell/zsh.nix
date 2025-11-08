@@ -40,10 +40,20 @@ in
         ];
       };
       initContent = ''
-        source ~/.config/zsh/.p10k.zsh
-        POWERLEVEL9K_DISABLE_CONFIGURATION_WIZRAD=true
-        eval "$(zoxide init --cmd cd zsh)"
-      '';
+  source ~/.config/zsh/.p10k.zsh
+  POWERLEVEL9K_DISABLE_CONFIGURATION_WIZRAD=true
+  eval "$(zoxide init --cmd cd zsh)"
+  
+  # Git sync function for /etc/nixos
+  gitsync() {
+    cd /etc/nixos
+    sudo git add .
+    echo "Commit message:"
+    read msg
+    sudo git commit -m "$msg"
+    sudo git push
+  }
+'';
     };
   };
 }

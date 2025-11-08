@@ -9,7 +9,7 @@
   gc = "git commit -m";
   gcfu = "git commit -m 'Updated Flake'";
   os = "nh os switch -a";
-  ou = "nh os switch -a -u";
+  osu = "nh os switch -a -u";
   cat = "bat";
   man = "batman";
 }
