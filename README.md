@@ -46,7 +46,7 @@
 
 ## ❄️ Showcase
 
-<video src="./docs/media/showcase.mp4" controls width="100%"></video>
+![Desktop Showcase](./docs/media/showcase.gif)
 
 ---
 
