@@ -17,12 +17,12 @@
   ];
 
 home-manager.sharedModules = [
-    (_: {
+    ({ lib, ... }: {
       programs.kitty = {
         enable = true;
         settings = {
-          background_opacity = "0.50";  
+          background_opacity = lib.mkForce "0.50";  
         };
       };
     })
-  ];}
+  ];
