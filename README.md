@@ -44,6 +44,11 @@
 
 ---
 
+## ❄️  howcase
+
+![Desktop Showcase](./docs/media/showcase.mp4)
+---
+
 ## 🚀 Installation
 
 ### Fresh Installation
