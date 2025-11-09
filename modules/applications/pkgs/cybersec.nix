@@ -67,6 +67,9 @@
     # === MOBILE ===
     frida-tools       # Dynamic instrumentation toolkit
     apkleaks          # Scanning APK files for URIs, endpoints & secrets
+    python3           # python 3 language
+    android-tools     # needed for rooting phones
+  
 
     # === NETWORK ANALYSIS ===
     wireshark         # Network protocol analyzer
