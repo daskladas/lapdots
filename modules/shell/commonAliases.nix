@@ -8,7 +8,7 @@
   ga = "git add .";
   gc = "git commit -m";
   gcfu = "git commit -m 'Updated Flake'";
-  os = "nh os switch -a";
+  os = "sudo nh os switch -a";
   osu = "nh os switch -a -u";
   cat = "bat";
   man = "batman";

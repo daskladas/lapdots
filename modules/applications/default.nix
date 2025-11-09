@@ -22,6 +22,7 @@ home-manager.sharedModules = [
         enable = true;
         settings = {
           background_opacity = lib.mkForce "0.50";  
+          font_size = "14.0";
         };
       };
     })
