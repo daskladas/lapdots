@@ -45,7 +45,7 @@ in
   eval "$(zoxide init --cmd cd zsh)"
   
   # Git sync function for /etc/nixos
-  gitsync() {
+  nsync() {
     cd /etc/nixos
     sudo git add .
     echo "Commit message:"
@@ -53,6 +53,21 @@ in
     sudo git commit -m "$msg"
     sudo git push
   }
+
+# Git sync function for projects
+psync() {
+  if [ ! -d .git ]; then
+    echo "❌ Not in your repos available!"
+    return 1
+  fi
+  
+  git add .
+  echo "Commit message:"
+  read msg
+  git commit -m "$msg"
+  git push
+}
+
 '';
     };
   };
