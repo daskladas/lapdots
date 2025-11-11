@@ -67,7 +67,7 @@
     # === MOBILE ===
     frida-tools       # Dynamic instrumentation toolkit
     apkleaks          # Scanning APK files for URIs, endpoints & secrets
-    python3           # python 3 language
+    python313Packages.pip       # python 3 language
     android-tools     # needed for rooting phones
   
 
