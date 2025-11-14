@@ -27,11 +27,6 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  fileSystems."/mnt/usb" =
-    { device = "/dev/disk/by-uuid/8A083BFB083BE4BB";
-      fsType = "ntfs";
-    };
-
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
