@@ -14,6 +14,7 @@
       brightnessctl
       grim
       gthumb
+      ags
       hyprpaper
       libnotify
       nemo-with-extensions
