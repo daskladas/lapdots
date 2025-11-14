@@ -19,7 +19,6 @@
     cava            # Audio-Visualizer (der beste für NixOS)
     bastet          # Tetris im Terminal
     gotop           # System-Monitor
-    hollywood       # Hacker-Terminal-Simulator
     bb              # ASCII-Art Demo
   ];
 }

@@ -6,7 +6,7 @@ let
       owner = "keyitdev";
       repo = "sddm-astronaut-theme";
       rev = "master";
-      sha256 = "sha256-ITufiMTnSX9cg83mlmuufNXxG1dp9OKG90VBZdDeMxw=";
+      sha256 = "ee7ta/yiRieaZxitq5LQZ5dwAkGLVjjmnekXRu6yh5E=";
     };
     installPhase = ''
       mkdir -p $out/share/sddm/themes/sddm-astronaut-theme
