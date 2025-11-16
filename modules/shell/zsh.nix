@@ -44,8 +44,8 @@ in
   POWERLEVEL9K_DISABLE_CONFIGURATION_WIZRAD=true
   eval "$(zoxide init --cmd cd zsh)"
   
-  # Git sync function for /etc/nixos
-  nsync() {
+  # Git push function for /etc/nixos
+  npush() {
     cd /etc/nixos
     sudo git add .
     echo "Commit message:"
@@ -54,8 +54,13 @@ in
     sudo git push
   }
 
-# Git sync function for projects
-psync() {
+npull() {
+  cd /etc/nixos
+  sudo git pull
+}
+
+# Git push function for projects
+ppush() {
   if [ ! -d .git ]; then
     echo "❌ Not in your repos available!"
     return 1
@@ -67,6 +72,17 @@ psync() {
   git commit -m "$msg"
   git push
 }
+
+# Git pull function for projects
+ppull() {
+  if [ ! -d .git ]; then
+    echo "❌ Not in your repos available!"
+    return 1
+  fi
+  
+  git pull
+}
+
 
 '';
     };
