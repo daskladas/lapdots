@@ -37,6 +37,7 @@
       "cfhdojbkjhnklbpkdaibdccddilifddb" # Adblock Plus
       "eimadpbcbfnmbkopoojfekhnkhdbieeh" # Dark Reader
       "ponfpcnoihfmfllpaingbgckeeldkhle" # YouTube Enhancer
+      "fnaicdffflnofjppbagibeoednhnbjhg" # Floccus Bookmarks
     ];
   };
 }
