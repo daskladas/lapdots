@@ -13,47 +13,50 @@
       enable = true;
       settings = lib.mkForce {
         bar.layouts = {
-          "0" = {
-            left = [
-              "dashboard"
-              "workspaces"
-              "windowtitle"
-            ];
-            middle = [ "media" ];
-            right = [
-              "volume"
-              "kbinput"
-              (lib.mkIf (hostName == "Laptop") "battery")
-              "network"
-              "bluetooth"
-              "systray"
-              "clock"
-              "notifications"
-            ];
-          };
-          "1" = {
-            left = [
-              "dashboard"
-              "workspaces"
-              "windowtitle"
-            ];
-            middle = [ "media" ];
-            right = [
-              "volume"
-              "kbinput"
-              "network"
-              "bluetooth"
-              "systray"
-              "clock"
-              "notifications"
-            ];
-          };
-        };
+  "0" = {
+    left = [
+      "dashboard"
+      "workspaces"
+      "cpu"
+      "ram"
+      "netstat"
+    ];
+    middle = [ "clock" ];
+    right = [
+      "media"
+      "volume"
+      (lib.mkIf (hostName == "Laptop") "battery")
+      "network"
+      "bluetooth"
+      "systray"
+      "notifications"
+    ];
+  };
+  "1" = {
+    left = [
+      "dashboard"
+      "workspaces"
+      "cpu"
+      "ram"
+      "netstat"
+    ];
+    middle = [ "clock" ];
+    right = [
+      "media"
+      "volume"
+      "network"
+      "bluetooth"
+      "systray"
+      "notifications"
+    ];
+  };
+};
         bar.clock.format = "%a %b %d %R";
         bar.launcher.autoDetectIcon = true;
         bar.windowtitle.icon = false;
         bar.workspaces.show_numbered = true;
-        bar.workspaces.workspaces = 10;
+        bar.workspaces.workspaces = 6;
+        bar.netstat.dynamicIcon = true;
         menus.clock.time.military = true;
         menus.clock.weather.location = "Viersen";
         menus.clock.weather.unit = "metric";

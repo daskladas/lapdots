@@ -4,12 +4,14 @@
  pkgs.ntfs3g
  pkgs.openssl
  pkgs.obs-studio
+ pkgs.darktable
+ pkgs.gimp-with-plugins
+ pkgs.kdePackages.kdenlive
+ pkgs.rustdesk-flutter
  pkgs.tree
- pkgs.teamviewer
  pkgs.conky
  pkgs.curl
  pkgs.wget
- pkgs.flameshot
  pkgs.gparted
  pkgs.libreoffice-still
  pkgs.htop

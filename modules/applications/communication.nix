@@ -4,6 +4,7 @@
     home.packages = with pkgs; [
       tutanota-desktop
       signal-desktop
+      tailscale
     ];
  };
 }

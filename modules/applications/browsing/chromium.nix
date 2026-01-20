@@ -30,7 +30,6 @@
     };
     extensions = [
       "nngceckbapebfimnlniiiahkandclblb" # Bitwarden
-      "enamippconapkdmgfgjchkhakpfinmaj" # DeArrow
       "oldceeleldhonbafppcapldpdifcinji" # LanguageTool
       "pkehgijcmpdhfbdbbnkijodmdjhbjlgp" # Privacy Badger
       "gebbhagfogifgggkldgodflihgfeippi" # Return YouTube Dislike

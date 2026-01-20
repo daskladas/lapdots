@@ -11,7 +11,6 @@ let
   cfg = config.devTools;
   defaultPackages = [
     #--- Editors ---#
-    pkgs.vscodium
     #--- Tools ---#
     # pkgs.nodejs_24
     pkgs.python314

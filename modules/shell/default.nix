@@ -14,7 +14,7 @@
     eza
     gh
     nixd
-    nixfmt-rfc-style
+    nixfmt
     unzip
     zoxide
   ];

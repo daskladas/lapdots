@@ -25,8 +25,8 @@ configuration {
 
 /*****----- Colors -----*****/
 * {
-    background:     #1D2021;
-    background-alt: #282828;
+    background:     #1D2021CC;
+    background-alt: #28282899;
     foreground:     #ebdbb2;
     selected:       #fabd2f;
     active:         #d79921;
@@ -75,9 +75,9 @@ window {
     enabled:                     true;
     margin:                      0px;
     padding:                     0px;
-    border:                      0px solid;
+    border:                      2px solid;
     border-radius:               20px;
-    border-color:                @border-colour;
+    border-color:                #fabd2f44;
     cursor:                      "default";
     /* Backgroud Colors */
     background-color:            @background-colour;

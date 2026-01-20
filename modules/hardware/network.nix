@@ -2,6 +2,7 @@
   hostName,
   lib,
   username,
+  pkgs,
   ...
 }:
 {
@@ -10,17 +11,51 @@
     networkmanager = {
       enable = true;
       wifi.powersave = true;
+      plugins = with pkgs; [
+        networkmanager-l2tp
+      ];
     };
     inherit hostName;
+    
+    wireguard.enable = true;
+    
     firewall = {
+      enable = true;
+      trustedInterfaces = [ "wg_config" "wg+" "alberto" "tailscale0" ];
+      
       allowedTCPPorts = [
         53317 # localsend
       ];
       allowedUDPPorts = [
         53317 # localsend
+        500   # IPsec IKE
+        4500  # IPsec NAT-T
+        51328 # WireGuard
+        41641 # Tailscale
       ];
+      
+      allowPing = true;
+      logReversePathDrops = true;
+      logRefusedConnections = true;
     };
   };
+
+  # IPsec/strongSwan Support
+  services.strongswan = {
+    enable = true;
+    secrets = [ "ipsec.d/ipsec.secrets" ];
+  };
+
+  # Tailscale VPN
+  services.tailscale.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    wireguard-tools
+    strongswan
+    networkmanager-l2tp
+    xl2tpd
+    tailscale
+  ];
 
   users.users.${username} = {
     extraGroups = [ "networkmanager" ];
@@ -28,17 +63,3 @@
 
   programs.traceroute.enable = true;
 }
-
-/*
-  Open TCP port:
-   nixos-firewall-tool open tcp 8888
-
-  Show all firewall rules:
-   nixos-firewall-tool show
-
-  Open UDP port:
-   nixos-firewall-tool open udp 51820
-
-  Reset firewall configuration to system settings:
-   nixos-firewall-tool reset
-*/

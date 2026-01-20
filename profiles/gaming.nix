@@ -25,6 +25,7 @@ openSourceGames = with pkgs; [
   hedgewars
   superTuxKart
   zeroad-unwrapped
+  luanti-client
 ];
 in
 {

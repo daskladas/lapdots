@@ -17,7 +17,6 @@
       ags
       hyprpaper
       libnotify
-      nemo-with-extensions
       networkmanagerapplet
       pavucontrol
       playerctl
@@ -39,6 +38,8 @@
   };
 
   programs.hyprlock = {
-    enable = true;
+  enable = true;
   };
+
+
 }

@@ -8,11 +8,13 @@ in
     swayidle # Screensaver with Pipes
     pipes-rs # Screensaver with Pipes
     numlockx # Nummernblock autom. aktivieren
-    mpvpaper # Live Wallpaper
     zenity   # GUI dialog 
     ffmpeg   # Thumbnail generation
     libnotify # Noficitaion
-
+    swww      # wallpaper
+    cliphist  # clipboard history
+    wl-clipboard # clipboard history
+    polkit_gnome # Polkit Agent für sudo GUI
 
   ];
 
@@ -31,10 +33,45 @@ in
 
       home.file = {
       # Wallpaper-Script symlink
-  ".local/bin/wallpaper-manager.sh" = {
-    source = ../../../../scripts/wallpaper-manager.sh;
-    executable = true;
-  }; 
+      ".local/bin/ghibli-wallpaper.sh" = {
+        source = ../../../../scripts/ghibli-wallpaper.sh;
+        executable = true;
+      }; 
+
+      # Hyprlock Config
+      ".config/hypr/hyprlock.conf".text = ''
+        general {
+          hide_cursor = true
+        }
+
+        background {
+          path = screenshot
+          blur_passes = 3
+          blur_size = 8
+        }
+
+        input-field {
+          size = 300, 50
+          outline_thickness = 2
+          outer_color = rgb(fabd2f)
+          inner_color = rgb(1d2021)
+          font_color = rgb(ebdbb2)
+          fade_on_empty = false
+          placeholder_text = Passwort...
+          hide_input = false
+          xkb_layout = de
+        }
+
+        label {
+          text = $TIME
+          color = rgb(ebdbb2)
+          font_size = 64
+          position = 0, 200
+          halign = center
+          valign = center
+        }
+      '';
+
       ".config/hypr/hyprland.conf".text = ''
         # ---- Common Configuration ---- #
         ${vars.monitorSetup.${hostName} or ''''}
@@ -139,7 +176,8 @@ in
         bind = $mainMod, T, exec, $terminal
         bind = $mainMod, C, killactive,
         bind = $mainMod, M, exit,
-        bind = $mainMod, V, togglefloating,
+        bind = $mainMod, F, togglefloating,
+        bind = $mainMod, V, exec, cliphist list | rofi -dmenu -p "Clipboard" | cliphist decode | wl-copy
         bind = $mainMod, R, exec, wofi --show drun
         bind = $mainMod, P, pseudo, # dwindle
         bind = $mainMod, Q, togglesplit, # dwindle
@@ -213,13 +251,15 @@ in
 
         # ---- Window Rules ---- #
         ${vars.WindowRules.${hostName} or ''''}
+        windowrulev2 = opacity 0.92 0.88, class:^(codium)$
 
         # ---- Autostart ---- #
-        exec-once=discord --start-in-tray
-        exec-once=mpvpaper -o "no-audio loop" --layer=background '*' /etc/nixos/assets/wallpapers/videos/live-wallpaper.mp4
+        exec-once = ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
         exec-once=signal-desktop --start-in-tray 
-        exec-once=swayidle -w timeout 30 'pipes-rs' resume 'pkill pipes-rs'
-      '';
+        exec-once = swww-daemon
+        exec-once = /home/daskladas/.local/bin/ghibli-wallpaper.sh  
+        exec-once = wl-paste --watch cliphist store
+    '';
     };
   };
 }

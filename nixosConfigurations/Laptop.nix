@@ -6,7 +6,7 @@ inputs.nixpkgs.lib.nixosSystem {
     hostName = "Laptop";
     systemType = "desktop";
     username = "daskladas";
-    wallpaper = "gruvbox-nix.png";
+    wallpaper = "nix-colors.png";
     inherit system;
   }
   // inputs;

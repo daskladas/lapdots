@@ -14,6 +14,8 @@
     ./virtualization.nix
     ./wezterm.nix
     ./terminal-fun.nix
+    ./vscodium.nix
+    ./nautilus.nix
   ];
 
 home-manager.sharedModules = [

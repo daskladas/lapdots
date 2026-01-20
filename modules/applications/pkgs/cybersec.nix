@@ -69,7 +69,7 @@
     apkleaks          # Scanning APK files for URIs, endpoints & secrets
     python313Packages.pip       # python 3 language
     android-tools     # needed for rooting phones
-  
+    aria2             # download ROMs for rooting phones  
 
     # === NETWORK ANALYSIS ===
     wireshark         # Network protocol analyzer
@@ -95,7 +95,6 @@
     # === CRYPTO & STEGANOGRAPHY ===
     steghide          # Hide data in images/audio
     stegseek          # Steghide password cracker
-    outguess          # Steganography tool
     zsteg             # Detect stegano-hidden data in PNG/BMP
     stegsolve         # Steganography analysis tool with filters
     haiti             # Hash type identifier (modern)
@@ -107,8 +106,6 @@
     # === PASSWORD CRACKING ===
     hashcat           # GPU-accelerated password cracker
     john              # CPU-based password cracker
-    hydra             # Network login brute-forcer
-    medusa            # Parallel login brute-forcer
     crunch            # Wordlist generator
     cewl              # Custom wordlist from websites
     ophcrack	      # Cracker using Rainbowtable
@@ -123,10 +120,8 @@
 
     # === FORENSICS & DATA RECOVERY ===
     scalpel           # Fast file carving tool
-    dc3dd	      # Patched dd with forensic features
     dcfldd	      # Enhanced dd for forensics
     ddrescue          # Data recovery from failing drives
-    bulk_extractor    # Extract features from disk images
 
     # === EXPLOITATION ===
     metasploit        # Exploitation framework
