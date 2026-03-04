@@ -1,12 +1,12 @@
 {
   agenix,
-  system,
+  pkgs,
   username,
   ...
 }:
 {
   environment.systemPackages = [
-    agenix.packages."${system}".default
+    agenix.packages."${pkgs.system}".default
   ];
 
   age = {

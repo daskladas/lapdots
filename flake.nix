@@ -1,5 +1,5 @@
 {
-  description = "Nixos config flake";
+  description = "NixOS — ThinkPad T14 Gen 2a";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -20,18 +20,24 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix = {
-      url = "github:nix-community/stylix";
+      url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs: {
-    nixosConfigurations = {
-      Laptop = import ./nixosConfigurations/Laptop.nix {
+  outputs = { nixpkgs, ... }@inputs: {
+    nixosConfigurations.Laptop = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = {
         inherit inputs;
-        system = "x86_64-linux";
-      };
+        username = "daskladas";
+        # TEMPORARY — will be removed as modules are migrated
+        desktopEnvironment = "hyprland";
+        displayManager = "greetd";
+        hostName = "Laptop";
+        wallpaper = "nix-colors.png";
+      } // inputs; # TEMPORARY — entertainment.nix, age.nix destructure inputs directly
+      modules = [ ./configuration.nix ];
     };
-    formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixfmt-tree;
   };
 }
