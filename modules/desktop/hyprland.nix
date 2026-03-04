@@ -34,25 +34,25 @@ in
       home.file = {
       # Wallpaper-Script symlink
       ".local/bin/ghibli-wallpaper.sh" = {
-        source = ../../../../scripts/ghibli-wallpaper.sh;
+        source = ../../scripts/ghibli-wallpaper.sh;
         executable = true;
       }; 
 
       # Rofi-Modes symlinks
       ".local/bin/rofi-modes/pentesting.sh" = {
-        source = ../../../../scripts/rofi-modes/pentesting.sh;
+        source = ../../scripts/rofi-modes/pentesting.sh;
         executable = true;
       };
       ".local/bin/rofi-modes/office.sh" = {
-        source = ../../../../scripts/rofi-modes/office.sh;
+        source = ../../scripts/rofi-modes/office.sh;
         executable = true;
       };
       ".local/bin/rofi-modes/communication.sh" = {
-        source = ../../../../scripts/rofi-modes/communication.sh;
+        source = ../../scripts/rofi-modes/communication.sh;
         executable = true;
       };
       ".local/bin/rofi-modes/coding.sh" = {
-        source = ../../../../scripts/rofi-modes/coding.sh;
+        source = ../../scripts/rofi-modes/coding.sh;
         executable = true;
       };
 

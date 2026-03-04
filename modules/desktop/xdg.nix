@@ -8,11 +8,11 @@
     mime = {
       defaultApplications = {
         "application/pdf" = [ "zathura.desktop" ];
-        "application/x-gnome-saved-search" = [ "nemo.desktop" ];
+        "application/x-gnome-saved-search" = [ "org.gnome.Nautilus.desktop" ];
         "image/jpeg" = [ "gthumb.desktop" ];
         "image/jpg" = [ "gthumb.desktop" ];
         "image/png" = [ "gthumb.desktop" ];
-        "inode/directory" = [ "nemo.desktop" ];
+        "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
         "video/avi" = [ "vlc.desktop" ];
         "video/mp4" = [ "vlc.desktop" ];
         "video/x-matroska" = [ "vlc.desktop" ];
