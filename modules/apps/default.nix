@@ -1,0 +1,20 @@
+{ username, ... }:
+{
+  imports = [
+    ./browsing.nix
+    ./communication.nix
+    ./office.nix
+    ./creative.nix
+    ./entertainment.nix
+    ./media.nix
+    ./filemanager.nix
+    ./terminals.nix
+    ./terminal-fun.nix
+    ./cybersec.nix      # TEMPORARY — becomes pentesting/ in Phase 9
+    ./virtualization.nix # TEMPORARY — moves to dev/ in Phase 6
+    ./vscodium.nix       # TEMPORARY — moves to dev/ in Phase 6
+  ];
+
+  # Electron Wayland flags (used by Discord, Signal, Teams, VSCodium)
+  home-manager.users.${username}.home.file.".config/electron-flags.conf".source = ./electron-flags.conf;
+}

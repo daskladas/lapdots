@@ -70,7 +70,15 @@
     ];
   };
 
-  environment.systemPackages = [ pkgs.sbctl ];
+  environment.systemPackages = with pkgs; [
+    sbctl
+    ntfs3g
+    curl
+    wget
+    gparted
+    openssl
+    mullvad-vpn
+  ];
 
   # ── Btrfs Maintenance ──
   services.btrfs.autoScrub = {

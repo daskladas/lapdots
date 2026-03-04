@@ -1,6 +1,6 @@
 {
   imports = [
-    ./applications
+    ./apps
     ./core
     ./desktop
     ./hardware
