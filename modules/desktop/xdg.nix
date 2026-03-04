@@ -35,10 +35,14 @@
     };
   };
 
-  home-manager.users.${username} = _: {
+  home-manager.users.${username} = {
     xdg.userDirs = {
       enable = true;
       createDirectories = true;
+      music = null;
+      videos = null;
+      templates = null;
+      publicShare = null;
     };
   };
 }

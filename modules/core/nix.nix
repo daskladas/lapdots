@@ -4,7 +4,6 @@
   system.stateVersion = "23.11";
   home-manager.users.${username} = {
     home.stateVersion = "23.11";
-    nixpkgs.config.allowUnfree = true;
     dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
   };
 

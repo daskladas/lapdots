@@ -31,11 +31,16 @@ in
     };
 
       home.file = {
-      # Wallpaper-Script symlink
+      # Script symlinks
       ".local/bin/ghibli-wallpaper.sh" = {
         source = ../../scripts/ghibli-wallpaper.sh;
         executable = true;
-      }; 
+      };
+      ".local/bin/wallpaper-manager.sh" = {
+        source = ../../scripts/wallpaper-manager.sh;
+        executable = true;
+      };
+
 
       # Rofi-Modes symlinks
       ".local/bin/rofi-modes/pentesting.sh" = {

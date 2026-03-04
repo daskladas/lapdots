@@ -6,12 +6,12 @@
     inputs.home-manager.nixosModules.home-manager
     inputs.stylix.nixosModules.stylix
 
-    # Host (NEW — replaces hosts/Laptop + hosts/common)
+    # Host
     ./host/hardware-configuration.nix
     ./host/hardware.nix
     ./host/locale.nix
 
-    # Modules (OLD paths — will be reorganized in later phases)
+    # Modules
     ./modules
     ./users
   ];
@@ -22,10 +22,13 @@
 
   networking.hostName = "Laptop";
 
-  # Hardware
+  # Home Manager
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
 
-  # Profiles
   # Hardware
   hw.gpu = { enable = true; brand = "intel"; };
+
+  # Profiles
   gaming.enable = false;
 }
