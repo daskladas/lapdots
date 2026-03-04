@@ -6,5 +6,6 @@
     ./desktop
     ./hardware
     ./security
+    ./gaming.nix
   ];
 }

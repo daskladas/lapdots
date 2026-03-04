@@ -1,29 +1,29 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, lib, pkgs, ... }:
 
 let
-  inherit (lib) mkIf mkMerge;
-  cfg = config.specs;
+  cfg = config.hw.gpu;
 in
 {
-  config = mkMerge [
-    {
+  options.hw.gpu = {
+    enable = lib.mkEnableOption "GPU support";
+    brand = lib.mkOption {
+      type = lib.types.nullOr (lib.types.enum [ "intel" "nvidia" "amd" ]);
+      default = null;
+      description = "GPU brand for driver selection";
+    };
+  };
+
+  config = lib.mkMerge [
+    (lib.mkIf cfg.enable {
       hardware.graphics = {
         enable = true;
         enable32Bit = true;
       };
-    }
+    })
 
-    # NVIDIA specifics
-    (mkIf (cfg.gpu.enable && cfg.gpu.brand == "nvidia") {
+    (lib.mkIf (cfg.enable && cfg.brand == "nvidia") {
       services.xserver.videoDrivers = [ "nvidia" ];
-
       boot.kernelModules = [ "nvidia-uvm" ];
-
       hardware.nvidia = {
         modesetting.enable = true;
         powerManagement.enable = true;
@@ -34,11 +34,9 @@ in
       };
     })
 
-    # Intel specifics
-    (mkIf (cfg.gpu.enable && cfg.gpu.brand == "intel") {
+    (lib.mkIf (cfg.enable && cfg.brand == "intel") {
       hardware.graphics.extraPackages = with pkgs; [
         vpl-gpu-rt
-        # intel-media-sdk  # uncomment for older Gen (pre-Xe) iGPUs
       ];
     })
   ];

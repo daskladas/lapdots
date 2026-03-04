@@ -13,9 +13,6 @@
 
     # Modules (OLD paths — will be reorganized in later phases)
     ./modules
-    ./profiles
-    ./assets
-    ./scripts
     ./users
   ];
 
@@ -26,9 +23,9 @@
   networking.hostName = "Laptop";
 
   # Hardware
-  specs.gpu = { enable = true; brand = "intel"; };
 
   # Profiles
-  devTools.enable = true;
+  # Hardware
+  hw.gpu = { enable = true; brand = "intel"; };
   gaming.enable = false;
 }
