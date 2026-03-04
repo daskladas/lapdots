@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   # ThinkPad T14 Gen 2a
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelModules = [ "mt7921e" ];
 
   # Wayland session variables

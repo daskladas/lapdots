@@ -1,8 +1,8 @@
 {
   imports = [
-    ./boot
-    ./nix
+    ./boot.nix
+    ./nix.nix
     ./programs
-    ./services
+    ./services.nix
   ];
 }
