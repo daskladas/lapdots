@@ -6,7 +6,6 @@
   imports = [
     ./hyprland.nix
     ./hyprpanel.nix
-    ./hyprpaper.nix
   ];
 
   environment = {
