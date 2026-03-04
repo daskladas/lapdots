@@ -1,10 +1,9 @@
 <h1 align="center">
    <img src="assets/logo/nix-snowflake.svg" width="100px" /> 
    <br>
-      daskladas's NixOS Configuration
+      nixdots — ThinkPad T14 Gen 2a
    <br>
       <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/palette/macchiato.png" width="600px" /> <br>
-   <div align="center">
    <div align="center">
       <p></p>
       <div align="center">
@@ -13,6 +12,9 @@
          </a>
          <a href="https://hyprland.org">
             <img src="https://img.shields.io/badge/WM-Hyprland-teal?style=for-the-badge&logo=hyprland&logoColor=white&labelColor=303446&color=89DCEB">
+         </a>
+         <a href="https://github.com/danth/stylix">
+            <img src="https://img.shields.io/badge/Theme-Gruvbox-orange?style=for-the-badge&labelColor=303446&color=d4be98">
          </a>
       </div>
       <br>
@@ -23,99 +25,140 @@
 
 ## 📋 System Information
 
-- **OS**: NixOS (Unstable channel)
-- **Desktop**: Hyprland with UWSM (Universal Wayland Session Manager)
-- **Filesystem**: Btrfs with compression
-- **Package Manager**: Nix with Flakes
-- **Configuration**: Fully declarative and reproducible
-- **Hosts**: Desktop (AMD/NVIDIA) and Laptop (Intel) configurations
+|                |                                        |
+| -------------- | -------------------------------------- |
+| **Host**       | Lenovo ThinkPad T14 Gen 2a (AMD Ryzen) |
+| **OS**         | NixOS Unstable with Flakes             |
+| **WM**         | Hyprland + UWSM + HyprPanel            |
+| **Theme**      | Gruvbox Dark Hard (via Stylix)         |
+| **Shell**      | Zsh + Powerlevel10k                    |
+| **Terminal**   | Wezterm / Kitty                        |
+| **Editor**     | VSCodium / Neovim                      |
+| **Browser**    | Chromium / Brave (Firejailed)          |
+| **Filesystem** | Btrfs with auto-scrub & balance        |
+| **Kernel**     | linux-latest                           |
+
+---
+
+## 🏗️ Structure
+
+```
+/etc/nixos/
+├── flake.nix                 # Flake inputs & system entry point
+├── configuration.nix         # Schaltzentrale — all imports & toggles
+├── host/
+│   ├── hardware-configuration.nix
+│   ├── hardware.nix          # Kernel, mt7921e, Wayland env vars
+│   └── locale.nix
+├── modules/
+│   ├── core/
+│   │   ├── boot.nix          # systemd-boot, Plymouth, kernel params
+│   │   ├── nix.nix           # Nix settings, GC, Btrfs maintenance
+│   │   └── services.nix      # Blueman, Flatpak, GNOME Keyring, SSH
+│   ├── desktop/
+│   │   ├── hyprland.nix      # Hyprland config, keybinds, monitors
+│   │   ├── hyprpanel.nix     # HyprPanel bar configuration
+│   │   ├── greetd.nix        # TUI greeter
+│   │   ├── rofi.nix          # App launcher (+config.rasi)
+│   │   ├── styling.nix       # Stylix, fonts, GTK, cursors, wallpapers
+│   │   └── xdg.nix           # MIME defaults, portals, user dirs
+│   ├── apps/
+│   │   ├── browsing.nix      # Chromium
+│   │   ├── communication.nix # Signal, Discord, Tutanota, Teams
+│   │   ├── creative.nix      # GIMP, Darktable, Kdenlive, OBS
+│   │   ├── entertainment.nix # Spicetify (Spotify)
+│   │   ├── filemanager.nix   # Nautilus
+│   │   ├── media.nix         # VLC, Zathura
+│   │   ├── office.nix        # LibreOffice, OnlyOffice
+│   │   ├── terminals.nix     # Wezterm, Kitty
+│   │   ├── terminal-fun.nix  # Pipes, CMatrix, etc.
+│   │   └── cybersec.nix      # 150+ pentesting tools
+│   ├── dev/
+│   │   ├── tools.nix         # VSCodium, Git, Neovim, Cargo
+│   │   ├── virtualization.nix# Docker, libvirtd, QEMU
+│   │   └── shell.nix         # Zsh, P10k, Fastfetch, aliases
+│   ├── security/
+│   │   ├── auth.nix          # PAM, SSH, sudo rules
+│   │   ├── encryption.nix    # Agenix, GnuPG, Bitwarden
+│   │   ├── firejail.nix      # Sandboxed apps
+│   │   ├── hardening.nix     # Kernel sysctl, auditd
+│   │   ├── usbguard.nix      # USB device whitelisting
+│   │   ├── clamav.nix        # Antivirus + realtime scanning
+│   │   └── aide.nix          # File integrity monitoring
+│   ├── hardware/
+│   │   ├── audio.nix         # Pipewire + parametric EQ
+│   │   ├── bluetooth.nix     # Bluetooth (off by default)
+│   │   ├── gpu.nix           # Intel/NVIDIA (mkEnableOption)
+│   │   ├── network.nix       # NetworkManager, WireGuard, Tailscale
+│   │   ├── peripherals.nix   # Printing, webcam
+│   │   └── power.nix         # auto-cpufreq, AMD pstate
+│   └── gaming.nix            # Steam, Wine, open source games (disabled)
+├── users/daskladas.nix
+├── scripts/                  # Wallpaper manager, rofi modes
+└── assets/                   # Wallpapers, logo
+```
 
 ---
 
 ## ✨ Features
 
-- 🎨 **Modular Configuration**: Clean separation of concerns
-- 🔒 **Security-First**: Hardened setup with defense-in-depth
-- 🏠 **Homelab Ready**: Designed for self-hosted infrastructure
-- 🎮 **Gaming Support**: Steam, Lutris, and more
-- 💻 **Development Tools**: Full dev stack included
-- 📦 **Reproducible**: Everything is declarative
-- 🖥️ **Multi-Host**: Separate configs for Desktop and Laptop
+- **Flat & readable** — max 2 levels of nesting, no empty wrapper files
+- **Security-first** — Firejail sandboxing, USBGuard, ClamAV realtime, AIDE integrity, kernel hardening, auditd
+- **Declarative** — single `configuration.nix` controls everything
+- **`mkEnableOption` toggles** — `gaming.enable`, `hw.gpu.enable` / `hw.gpu.brand`
+- **Stylix theming** — Gruvbox Dark Hard applied system-wide
+- **Pentesting ready** — 150+ security tools in `cybersec.nix`
 
 ---
 
-## ❄️ Showcase
+## 🚀 Usage
 
-![Desktop Showcase](./docs/media/showcase.gif)
-
----
-
-## 🚀 Installation
-
-### Fresh Installation
 ```bash
-# Clone the repository
-git clone https://shit.homeserveris.online:8443/daskladas/nix-dots.git
-cd nix-dots
+# Clone
+git clone git@github.com:daskladas/nixdots.git /etc/nixos
 
-# Partition and format disk with Disko
-sudo nix --experimental-features "nix-command flakes" run \
-  github:nix-community/disko/latest -- \
-  --mode destroy,format,mount ./disko-defaults.nix
+# Apply
+sudo nixos-rebuild switch
 
-# Install NixOS (choose Desktop OR Laptop)
-sudo nixos-install --flake .#Desktop
-# OR
-sudo nixos-install --flake .#Laptop
-```
+# Update inputs
+sudo nix flake update
+sudo nixos-rebuild switch
 
-### Existing System
-```bash
-# Clone the repository
-git clone https://shit.homeserveris.online:8443/daskladas/nix-dots.git
-cd nix-dots
-
-# Apply configuration (choose your host)
-sudo nixos-rebuild switch --flake .#Desktop
-# OR
-sudo nixos-rebuild switch --flake .#Laptop
+# Test without activating
+sudo nixos-rebuild dry-build
 ```
 
 ---
 
-## 🛠️ System Management
+## 🛠️ Management
 
-| Command                                       | Description                          |
-| --------------------------------------------- | ------------------------------------ |
-| `sudo nixos-rebuild switch --flake .#Desktop` | Apply and activate system changes    |
-| `nixos-rebuild test --flake .#Desktop`        | Test configuration without switching |
-| `nix flake update`                            | Update all flake inputs              |
-| `nix flake check`                             | Validate flake configuration         |
-| `sudo nix-collect-garbage -d`                 | Clean old generations                |
+| Command                        | Description                      |
+| ------------------------------ | -------------------------------- |
+| `sudo nixos-rebuild switch`    | Apply & activate                 |
+| `sudo nixos-rebuild dry-build` | Test build without applying      |
+| `nix flake update`             | Update all inputs                |
+| `sudo nix-collect-garbage -d`  | Remove old generations           |
+| `nh os switch`                 | Rebuild via nh (prettier output) |
 
 ---
 
 ## 🔧 Troubleshooting
 
-| Command                                                     | Description                                 |
-| ------------------------------------------------------------| --------------------------------------------|
-| `sudo nixos-rebuild switch --flake .#Desktop --show-trace`  | Show detailed error trace                   |
-| `nix flake update`                                          | Update dependencies (may fix build issues)  |
-| `nix flake check`                                           | Validate configuration syntax               |
-| `find /etc/nixos -name "filename"`                          | Find specific file by name                  |
-| `find /etc/nixos -name "*.nix"`                             | Find all .nix files                         |
-| `grep -rn "search-text" /etc/nixos --include="*.nix"`       | Find files containing specific text         |
-| `grep -rl "search-text" /etc/nixos`                         | List files containing text (no line numbers)|
-| `sudo nix-store --verify --check-contents`                  | Verify Nix store integrity                  |
-| `journalctl -xeu nixos-rebuild`                             | Check rebuild logs                          |
+| Command                                  | Description            |
+| ---------------------------------------- | ---------------------- |
+| `nixos-rebuild switch --show-trace`      | Detailed error trace   |
+| `journalctl -xeu home-manager-daskladas` | Home Manager logs      |
+| `systemctl --user status hyprpanel`      | HyprPanel status       |
+| `aide-check`                             | File integrity check   |
+| `clamscan-status`                        | Last antivirus scan    |
+| `audit-log`                              | Recent security events |
+| `usb-list`                               | All USB devices        |
 
 ---
 
 <div align="center">
 
-_Built with ❤️ and lots of ☕_
-
-**[⭐ Star this repo](https://shit.homeserveris.online:8443/daskladas/nix-dots) if you found it helpful!**
+_Built with ❤️ and mass amounts of ☕_
 
 Special thanks to [@c0d3h01](https://github.com/c0d3h01) for the inspiration and initial setup!
 
