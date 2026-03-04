@@ -1,13 +1,11 @@
 {
   imports = [
-    ./wallpaper-manager-sudoers.nix
-    ./authentication
-    ./encryption
-    ./gnupg
+    ./auth.nix
+    ./encryption.nix
     ./firejail.nix
-    ./clamav.nix
-    ./usbguard.nix
     ./hardening.nix
+    ./usbguard.nix
+    ./clamav.nix
     ./aide.nix
   ];
 }
