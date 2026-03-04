@@ -9,6 +9,7 @@
  pkgs.kdePackages.kdenlive
  pkgs.rustdesk-flutter
  pkgs.tree
+ pkgs.cargo
  pkgs.conky
  pkgs.curl
  pkgs.wget

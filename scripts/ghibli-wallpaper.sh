@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Verhindere doppelte Instanzen
+pidof -o %PPID -x "$(basename "$0")" >/dev/null && exit 0
+
 WALLPAPER_DIR="/home/daskladas/Documents/walls/ghibli-studio"
 INTERVAL=300  # 5 Minuten
 

@@ -20,7 +20,7 @@ inputs.nixpkgs.lib.nixosSystem {
           gpu.brand = "intel";
         };
         devTools.enable = true;
-        gaming.enable = true;
+        gaming.enable = false;
       }
     )
   ];

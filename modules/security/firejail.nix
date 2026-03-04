@@ -4,10 +4,6 @@
     enable = true;
     wrappedBinaries = {
       # Browser
-      chromium = {
-        executable = "${pkgs.chromium}/bin/chromium";
-        profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
-      };
       brave = {
         executable = "${pkgs.brave}/bin/brave";
         profile = "${pkgs.firejail}/etc/firejail/brave.profile";
@@ -25,12 +21,6 @@
       teams-for-linux = {
         executable = "${pkgs.teams-for-linux}/bin/teams-for-linux";
         profile = "${pkgs.firejail}/etc/firejail/teams-for-linux.profile";
-      };
-      
-      # Medien
-      spotify = {
-        executable = "${pkgs.spotify}/bin/spotify";
-        profile = "${pkgs.firejail}/etc/firejail/spotify.profile";
       };
       
       # Office

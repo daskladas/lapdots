@@ -47,12 +47,12 @@ Laptop = ''
     Desktop = ''
       # General layout rule for workspace 2
       workspace    = 2,split:v
-      windowrulev2 = workspace 2 silent, class:^(discord)$
-      windowrulev2 = tile, class:^(discord)$
-      windowrulev2 = workspace 2 silent, title:^(Spotify Premium)$
-      windowrulev2 = tile, title:^(Spotify Premium)$
+      windowrule = workspace 2 silent, match:class ^(discord)$
+      windowrule = tile 1, match:class ^(discord)$
+      windowrule = workspace 2 silent, match:title ^(Spotify Premium)$
+      windowrule = tile 1, match:title ^(Spotify Premium)$
       # General layout rule for workspace 7
-      windowrulev2 = workspace 7 silent, class:^(steam)$
+      windowrule = workspace 7 silent, match:class ^(steam)$
     '';
     Laptop = '''';
   };

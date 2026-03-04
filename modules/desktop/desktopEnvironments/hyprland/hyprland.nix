@@ -38,6 +38,24 @@ in
         executable = true;
       }; 
 
+      # Rofi-Modes symlinks
+      ".local/bin/rofi-modes/pentesting.sh" = {
+        source = ../../../../scripts/rofi-modes/pentesting.sh;
+        executable = true;
+      };
+      ".local/bin/rofi-modes/office.sh" = {
+        source = ../../../../scripts/rofi-modes/office.sh;
+        executable = true;
+      };
+      ".local/bin/rofi-modes/communication.sh" = {
+        source = ../../../../scripts/rofi-modes/communication.sh;
+        executable = true;
+      };
+      ".local/bin/rofi-modes/coding.sh" = {
+        source = ../../../../scripts/rofi-modes/coding.sh;
+        executable = true;
+      };
+
       # Hyprlock Config
       ".config/hypr/hyprlock.conf".text = ''
         general {
@@ -182,7 +200,7 @@ in
         bind = $mainMod, P, pseudo, # dwindle
         bind = $mainMod, Q, togglesplit, # dwindle
         bind = $mainMod ALT_L, L, exec, hyprlock
-        bind = $mainMod, S, exec, rofi -show drun -showicons
+        bind = $mainMod, S, exec, rofi -show drun -show-icons
         bind = $mainMod SHIFT, E, exec, rofi -modi emoji -show emoji
         bind = $mainMod, B, exec, chromium
         bind = $mainMod, W, exec, /home/daskladas/.local/bin/wallpaper-manager.sh
@@ -245,13 +263,14 @@ in
         bind = , XF86MonBrightnessDown, exec, brightnessctl s 5%-
 
         # Pavucontrol
-        windowrulev2 = float, class:^(pavucontrol)$
-        windowrulev2 = maxsize 300 300, class:^(pavucontrol)$
-        windowrulev2 = move onscreen 86% 4%, class:^(pavucontrol)$
+        windowrule = float 1, match:class ^(pavucontrol)$
+        windowrule = max_size 300 300, match:class ^(pavucontrol)$
+        windowrule = move onscreen 86% 4%, match:class ^(pavucontrol)$
 
         # ---- Window Rules ---- #
         ${vars.WindowRules.${hostName} or ''''}
-        windowrulev2 = opacity 0.92 0.88, class:^(codium)$
+        windowrule = opacity 0.92 0.88, match:class ^(codium)$
+        windowrule = opacity 0.85 0.85, match:class ^(spotify)$
 
         # ---- Autostart ---- #
         exec-once = ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1

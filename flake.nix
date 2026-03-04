@@ -31,10 +31,6 @@
         inherit inputs;
         system = "x86_64-linux";
       };
-      Desktop = import ./nixosConfigurations/Desktop.nix {
-        inherit inputs;
-        system = "x86_64-linux";
-      };
     };
     formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixfmt-tree;
   };

@@ -27,7 +27,6 @@
     dirb              # Web directory brute-forcer
     gobuster          # Directory/DNS brute-forcer
     ffuf              # Fast web fuzzer
-    wfuzz             # Web application fuzzer
     arjun             # HTTP parameter discovery
     commix            # Command injection exploiter
     whatweb	      # Web Scanner
@@ -108,7 +107,6 @@
     john              # CPU-based password cracker
     crunch            # Wordlist generator
     cewl              # Custom wordlist from websites
-    ophcrack	      # Cracker using Rainbowtable
     chntpw            # Windows Password Editor
     samdump2          # Dump password hashes by NT/XP
     seclists          # Collection of multiple types of security wordlists
