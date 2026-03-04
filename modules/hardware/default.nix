@@ -1,10 +1,10 @@
 {
   imports = [
-    ./audio
-    ./peripherals
+    ./audio.nix
     ./bluetooth.nix
+    ./gpu.nix
     ./network.nix
-    ./nvidia.nix
-    ./auto-cpufreq.nix
+    ./peripherals.nix
+    ./power.nix
   ];
 }

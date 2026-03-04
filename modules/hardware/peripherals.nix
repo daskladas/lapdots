@@ -10,6 +10,15 @@ let
   '';
 in
 {
+  # ── Printing ──
+  services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
+  # ── Webcam ──
   environment.systemPackages = with pkgs; [
     v4l-utils
     ffmpeg
@@ -29,9 +38,7 @@ in
   };
 
   boot.kernelModules = [ "v4l2loopback" ];
-  boot.extraModulePackages = [
-    config.boot.kernelPackages.v4l2loopback
-  ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
   boot.extraModprobeConfig = ''
     options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
   '';

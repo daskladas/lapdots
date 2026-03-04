@@ -3,6 +3,8 @@ let
   EQPath = ".config/pipewire/EQ.txt";
 in
 {
+  security.rtkit.enable = true;
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -10,10 +12,13 @@ in
     jack.enable = true;
     pulse.enable = true;
   };
-  environment.systemPackages = [
-    pkgs.helvum
-  ];
-  home-manager.users.${username} = _: {
+
+  # PulseAudio explizit aus (Pipewire übernimmt)
+  services.pulseaudio.enable = false;
+
+  environment.systemPackages = [ pkgs.helvum ];
+
+  home-manager.users.${username} = {
     home.file = {
       ".config/pipewire/pipewire.conf.d/my-parametric-equalizer.conf".text = ''
         context.modules = [
