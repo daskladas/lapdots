@@ -1,6 +1,5 @@
-{ username, hostName, pkgs, ... }:
+{ username, pkgs, ... }:
 let
-  vars = import ./hyprVariables.nix;
 in
   {
   environment.systemPackages = with pkgs; [
@@ -92,7 +91,17 @@ in
 
       ".config/hypr/hyprland.conf".text = ''
         # ---- Common Configuration ---- #
-        ${vars.monitorSetup.${hostName} or ''''}
+        # ── Monitor Setup ──
+        monitor = eDP-1, 1920x1080@60, 0x0, 1
+        monitor = DP-5, 1920x1080@240, 1920x0, 1
+        monitor = DP-6, 1920x1080@240, 3840x0, 1
+        workspace = 1, monitor:eDP-1, default:true
+        workspace = 4, monitor:eDP-1
+        workspace = 2, monitor:DP-5, default:true
+        workspace = 5, monitor:DP-5
+        workspace = 3, monitor:DP-6, default:true
+        workspace = 6, monitor:DP-6
+        monitor = , preferred, auto, 1
 
         # ---- Environment Variables ---- #
         env = XDG_CURRENT_DESKTOP,Hyprland
@@ -268,7 +277,6 @@ in
         windowrule = move onscreen 86% 4%, match:class ^(pavucontrol)$
 
         # ---- Window Rules ---- #
-        ${vars.WindowRules.${hostName} or ''''}
         windowrule = opacity 0.92 0.88, match:class ^(codium)$
         windowrule = opacity 0.85 0.85, match:class ^(spotify)$
 

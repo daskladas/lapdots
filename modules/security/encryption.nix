@@ -1,8 +1,8 @@
-{ pkgs, username, agenix, ... }:
+{ pkgs, username, inputs, ... }:
 {
   # ── Agenix ──
   environment.systemPackages = [
-    agenix.packages."${pkgs.system}".default
+    inputs.agenix.packages."${pkgs.system}".default
     pkgs.bitwarden-desktop
     pkgs.proton-authenticator
     pkgs.pinentry-curses

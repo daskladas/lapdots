@@ -1,5 +1,4 @@
 {
-  hostName,
   lib,
   username,
   pkgs,
@@ -15,7 +14,6 @@
         networkmanager-l2tp
       ];
     };
-    inherit hostName;
     
     wireguard.enable = true;
     

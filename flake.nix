@@ -31,12 +31,7 @@
       specialArgs = {
         inherit inputs;
         username = "daskladas";
-        # TEMPORARY — will be removed as modules are migrated
-        desktopEnvironment = "hyprland";
-        displayManager = "greetd";
-        hostName = "Laptop";
-        wallpaper = "nix-colors.png";
-      } // inputs; # TEMPORARY — entertainment.nix, age.nix destructure inputs directly
+      };
       modules = [ ./configuration.nix ];
     };
   };

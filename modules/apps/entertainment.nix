@@ -1,8 +1,8 @@
-{ spicetify-nix, pkgs, lib, ... }:
+{ inputs, pkgs, lib, ... }:
 let
-  spicePkgs = spicetify-nix.legacyPackages.${pkgs.system};
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
 in {
-  imports = [ spicetify-nix.nixosModules.default ];
+  imports = [ inputs.spicetify-nix.nixosModules.default ];
 
   programs.spicetify = {
     enable = true;

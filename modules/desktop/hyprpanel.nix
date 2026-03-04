@@ -1,9 +1,7 @@
 {
   config,
-  hostName,
   lib,
   username,
-  wallpaper,
   ...
 }:
 {
@@ -25,7 +23,7 @@
     right = [
       "media"
       "volume"
-      (lib.mkIf (hostName == "Laptop") "battery")
+      "battery"
       "network"
       "bluetooth"
       "systray"
@@ -67,7 +65,7 @@
         theme.matugen = false;
         theme.matugen_settings.scheme_type = "fidelity";
         wallpaper.enable = false;
-        wallpaper.image = "/home/${username}/.config/backgrounds/${wallpaper}";
+        wallpaper.image = "/home/${username}/.config/backgrounds/nix-colors.png";
 
         ### Gruvbox Theme Settings ###
         theme.bar.menus.menu.notifications.scrollbar.color = "#83a598";
