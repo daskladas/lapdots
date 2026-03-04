@@ -1,8 +1,9 @@
 { pkgs, username, ... }:
 {
   programs.virt-manager.enable = true;
-  
+
   virtualisation = {
+    docker.enable = true;
     libvirtd = {
       enable = true;
       qemu = {
@@ -13,13 +14,14 @@
     };
     spiceUSBRedirection.enable = true;
   };
-  
-  users.users.${username}.extraGroups = [ "libvirtd" ];
-  
+
+  users.users.${username}.extraGroups = [ "libvirtd" "docker" ];
+
   environment.systemPackages = with pkgs; [
     virt-manager
     virt-viewer
     qemu
+    quickemu
     swtpm
   ];
 }

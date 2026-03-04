@@ -11,8 +11,6 @@
     ./terminals.nix
     ./terminal-fun.nix
     ./cybersec.nix      # TEMPORARY — becomes pentesting/ in Phase 9
-    ./virtualization.nix # TEMPORARY — moves to dev/ in Phase 6
-    ./vscodium.nix       # TEMPORARY — moves to dev/ in Phase 6
   ];
 
   # Electron Wayland flags (used by Discord, Signal, Teams, VSCodium)
