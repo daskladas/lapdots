@@ -40,4 +40,7 @@
   apps.filemanager.enable = true;
   apps.terminals.enable = true;
   apps.terminal-fun.enable = true;
+
+  # Security
+  security.sandboxing.enable = true;
 }
