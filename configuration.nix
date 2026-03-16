@@ -38,4 +38,5 @@
   apps.communication.enable = true;
   apps.media.enable = true;
   apps.filemanager.enable = true;
+  apps.terminals.enable = true;
 }
