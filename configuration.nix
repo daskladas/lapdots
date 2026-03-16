@@ -67,4 +67,7 @@
   cybersec.reversing.enable = true;
   cybersec.enumeration.enable = true;
   cybersec.utilities.enable = true;
+
+  # Dev
+  dev.tools.enable = true;
 }
