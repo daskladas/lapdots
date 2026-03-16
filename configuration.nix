@@ -45,4 +45,5 @@
   security.sandboxing.enable = true;
   security.antivirus.enable = true;
   security.integrity.enable = true;
+  security.usb.enable = true;
 }
