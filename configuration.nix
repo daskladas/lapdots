@@ -46,4 +46,5 @@
   security.antivirus.enable = true;
   security.integrity.enable = true;
   security.usb.enable = true;
+  security.hardening.enable = true;
 }
