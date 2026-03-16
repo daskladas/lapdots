@@ -31,4 +31,5 @@
 
   # Profiles
   gaming.enable = false;
+  apps.creative.enable = true;
 }

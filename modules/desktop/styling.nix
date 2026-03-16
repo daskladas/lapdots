@@ -20,8 +20,6 @@
   # ── GTK + Cursor ──
   home-manager.users.${username} = {
     # Wallpapers + Logo
-    home.file.".config/backgrounds".source = ../../assets/wallpapers;
-    home.file.".config/nixlogo.svg".source = ../../assets/logo/nix-snowflake.svg;
 
     home.pointerCursor = {
       package = pkgs.bibata-cursors;
