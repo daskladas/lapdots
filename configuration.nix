@@ -70,4 +70,5 @@
 
   # Dev
   dev.tools.enable = true;
+  dev.virtualization.enable = true;
 }

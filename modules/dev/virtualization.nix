@@ -1,27 +1,36 @@
-{ pkgs, username, ... }:
+{ lib, config, pkgs, username, ... }:
+let
+  cfg = config.dev.virtualization;
+in
 {
-  programs.virt-manager.enable = true;
-
-  virtualisation = {
-    docker.enable = true;
-    libvirtd = {
-      enable = true;
-      qemu = {
-        package = pkgs.qemu_kvm;
-        runAsRoot = false;
-        swtpm.enable = true;
-      };
-    };
-    spiceUSBRedirection.enable = true;
+  options.dev.virtualization = {
+    enable = lib.mkEnableOption "virtualization (Docker, libvirtd, QEMU, virt-manager)";
   };
 
-  users.users.${username}.extraGroups = [ "libvirtd" "docker" ];
+  config = lib.mkIf cfg.enable {
+    programs.virt-manager.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    virt-manager
-    virt-viewer
-    qemu
-    quickemu
-    swtpm
-  ];
+    virtualisation = {
+      docker.enable = true;
+      libvirtd = {
+        enable = true;
+        qemu = {
+          package = pkgs.qemu_kvm;
+          runAsRoot = false;
+          swtpm.enable = true;
+        };
+      };
+      spiceUSBRedirection.enable = true;
+    };
+
+    users.users.${username}.extraGroups = [ "libvirtd" "docker" ];
+
+    environment.systemPackages = with pkgs; [
+      virt-manager
+      virt-viewer
+      qemu
+      quickemu
+      swtpm
+    ];
+  };
 }
