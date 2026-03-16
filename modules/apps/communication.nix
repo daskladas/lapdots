@@ -8,12 +8,11 @@
         withOpenASAR = false;
         withVencord = true;
       })
-      teams-for-linux
+#      teams-for-linux
       localsend
       rustdesk-flutter
     ];
 
     # Teams config
-    home.file.".config/teams-for-linux/config.json".source = ./t4l.json;
   };
 }

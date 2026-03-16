@@ -3,7 +3,7 @@
   # ── Agenix ──
   environment.systemPackages = [
     inputs.agenix.packages."${pkgs.stdenv.hostPlatform.system}".default
-    pkgs.bitwarden-desktop
+    #pkgs.bitwarden-desktop
     pkgs.proton-authenticator
     pkgs.pinentry-curses
     pkgs.pinentry-gnome3

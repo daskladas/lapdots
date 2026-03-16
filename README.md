@@ -1,9 +1,8 @@
 <h1 align="center">
-   <img src="assets/logo/nix-snowflake.svg" width="100px" /> 
+   <img src="https://raw.githubusercontent.com/NixOS/nixos-artwork/master/logo/nix-snowflake-colours.svg" width="100px" />
    <br>
-      nixdots — ThinkPad T14 Gen 2a
+   lapdots — ThinkPad T14 Gen 2a
    <br>
-      <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/palette/macchiato.png" width="600px" /> <br>
    <div align="center">
       <p></p>
       <div align="center">
@@ -21,6 +20,10 @@
    </div>
 </h1>
 
+<p align="center">
+  <img src="assets/screenshot.png" width="100%" />
+</p>
+
 ---
 
 ## 📋 System Information
@@ -29,18 +32,24 @@
 | -------------- | -------------------------------------- |
 | **Host**       | Lenovo ThinkPad T14 Gen 2a (AMD Ryzen) |
 | **OS**         | NixOS Unstable with Flakes             |
-| **WM**         | Hyprland + UWSM + HyprPanel            |
+| **WM**         | Hyprland + UWSM + HyprPanel           |
 | **Theme**      | Gruvbox Dark Hard (via Stylix)         |
 | **Shell**      | Zsh + Powerlevel10k                    |
-| **Terminal**   | Wezterm / Kitty                        |
+| **Terminal**   | Kitty                                  |
 | **Editor**     | VSCodium / Neovim                      |
-| **Browser**    | Chromium / Brave (Firejailed)          |
+| **Browser**    | Chromium (Firejailed)                  |
 | **Filesystem** | Btrfs with auto-scrub & balance        |
-| **Kernel**     | linux-latest                           |
 
 ---
 
 ## 🏗️ Structure
+
+<p align="center">
+  <img src="assets/flake-structure.svg" width="100%" />
+</p>
+
+<details>
+<summary>File tree</summary>
 
 ```
 /etc/nixos/
@@ -64,22 +73,23 @@
 │   │   └── xdg.nix           # MIME defaults, portals, user dirs
 │   ├── apps/
 │   │   ├── browsing.nix      # Chromium
-│   │   ├── communication.nix # Signal, Discord, Tutanota, Teams
+│   │   ├── communication.nix # Signal, Discord, Tutanota
 │   │   ├── creative.nix      # GIMP, Darktable, Kdenlive, OBS
 │   │   ├── entertainment.nix # Spicetify (Spotify)
 │   │   ├── filemanager.nix   # Nautilus
 │   │   ├── media.nix         # VLC, Zathura
 │   │   ├── office.nix        # LibreOffice, OnlyOffice
-│   │   ├── terminals.nix     # Wezterm, Kitty
-│   │   ├── terminal-fun.nix  # Pipes, CMatrix, etc.
+│   │   ├── terminals.nix     # Kitty
+│   │   ├── terminal-fun.nix  # Pipes, CMatrix, cowsay
 │   │   └── cybersec.nix      # 150+ pentesting tools
 │   ├── dev/
 │   │   ├── tools.nix         # VSCodium, Git, Neovim, Cargo
 │   │   ├── virtualization.nix# Docker, libvirtd, QEMU
-│   │   └── shell.nix         # Zsh, P10k, Fastfetch, aliases
+│   │   ├── shell.nix         # Zsh, P10k, Fastfetch, aliases
+│   │   └── commonAliases.nix # Shared shell aliases
 │   ├── security/
 │   │   ├── auth.nix          # PAM, SSH, sudo rules
-│   │   ├── encryption.nix    # Agenix, GnuPG, Bitwarden
+│   │   ├── encryption.nix    # Agenix, GnuPG
 │   │   ├── firejail.nix      # Sandboxed apps
 │   │   ├── hardening.nix     # Kernel sysctl, auditd
 │   │   ├── usbguard.nix      # USB device whitelisting
@@ -92,11 +102,13 @@
 │   │   ├── network.nix       # NetworkManager, WireGuard, Tailscale
 │   │   ├── peripherals.nix   # Printing, webcam
 │   │   └── power.nix         # auto-cpufreq, AMD pstate
-│   └── gaming.nix            # Steam, Wine, open source games (disabled)
-├── users/daskladas.nix
+│   └── gaming.nix            # Steam, Wine (disabled)
+├── users/daskladas/default.nix
 ├── scripts/                  # Wallpaper manager, rofi modes
-└── assets/                   # Wallpapers, logo
+└── assets/                   # Screenshot, flake diagram
 ```
+
+</details>
 
 ---
 
@@ -115,7 +127,7 @@
 
 ```bash
 # Clone
-git clone git@github.com:daskladas/nixdots.git /etc/nixos
+git clone git@github.com:daskladas/lapdots.git /etc/nixos
 
 # Apply
 sudo nixos-rebuild switch

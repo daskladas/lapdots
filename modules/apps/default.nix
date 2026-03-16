@@ -10,7 +10,7 @@
     ./filemanager.nix
     ./terminals.nix
     ./terminal-fun.nix
-    ./cybersec.nix      # TEMPORARY — becomes pentesting/ in Phase 9
+    ./cybersec.nix
   ];
 
   # Electron Wayland flags (used by Discord, Signal, Teams, VSCodium)

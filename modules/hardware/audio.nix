@@ -16,7 +16,7 @@ in
   # PulseAudio explizit aus (Pipewire übernimmt)
   services.pulseaudio.enable = false;
 
-  environment.systemPackages = [ pkgs.helvum ];
+  environment.systemPackages = [ pkgs.qpwgraph ];
 
   home-manager.users.${username} = {
     home.file = {

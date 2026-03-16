@@ -2,7 +2,7 @@
 result
 result-*
 # Hardware configs (wird auf Laptop neu generiert!)
-hosts/Laptop/hardware-configuration.nix
+host/hardware-configuration.nix
 
 # Certificates (NIE committen!)
 certs/
