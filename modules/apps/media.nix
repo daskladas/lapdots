@@ -1,6 +1,15 @@
-{ pkgs, username, ... }:
+{ lib, config, pkgs, username, ... }:
+let
+  cfg = config.apps.media;
+in
 {
-  home-manager.users.${username}.home.packages = with pkgs; [
-    vlc
-  ];
+  options.apps.media = {
+    enable = lib.mkEnableOption "media apps (VLC)";
+  };
+
+  config = lib.mkIf cfg.enable {
+    home-manager.users.${username}.home.packages = with pkgs; [
+      vlc
+    ];
+  };
 }

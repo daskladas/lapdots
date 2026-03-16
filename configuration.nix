@@ -36,4 +36,5 @@
   apps.entertainment.enable = true;
   apps.browsing.enable = true;
   apps.communication.enable = true;
+  apps.media.enable = true;
 }
