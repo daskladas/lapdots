@@ -71,4 +71,7 @@
   # Dev
   dev.tools.enable = true;
   dev.virtualization.enable = true;
+
+  # Hardware
+  hw.bluetooth.enable = true;
 }
