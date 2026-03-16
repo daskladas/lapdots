@@ -33,4 +33,5 @@
   gaming.enable = false;
   apps.creative.enable = true;
   apps.office.enable = true;
+  apps.entertainment.enable = true;
 }
