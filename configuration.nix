@@ -39,4 +39,5 @@
   apps.media.enable = true;
   apps.filemanager.enable = true;
   apps.terminals.enable = true;
+  apps.terminal-fun.enable = true;
 }
