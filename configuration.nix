@@ -45,6 +45,8 @@
 
   # ── Gaming ────────────────────────────────────
   gaming.enable = false;
+    gaming.steam.enable = false;
+    gaming.foss.enable = false;
 
   # ── Dev ───────────────────────────────────────
   dev.tools.enable           = true;
