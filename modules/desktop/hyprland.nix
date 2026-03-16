@@ -217,7 +217,7 @@ in
         bind = $mainMod, S, exec, rofi -show drun -show-icons
         bind = $mainMod SHIFT, E, exec, rofi -modi emoji -show emoji
         bind = $mainMod, B, exec, chromium
-        bind = $mainMod, W, exec, /home/daskladas/.local/bin/wallpaper-manager.sh
+        bind = $mainMod, W, exec, /home/${username}/.local/bin/wallpaper-manager.sh
  
         # ---- Window Control Keybinds---- #
         bind = $mainMod, h, movefocus, l
@@ -289,7 +289,7 @@ in
         exec-once = ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
         exec-once=signal-desktop --start-in-tray 
         exec-once = swww-daemon
-        exec-once = /home/daskladas/.local/bin/ghibli-wallpaper.sh  
+        exec-once = /home/${username}/.local/bin/ghibli-wallpaper.sh  
         exec-once = wl-paste --watch cliphist store
     '';
     };
