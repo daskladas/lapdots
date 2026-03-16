@@ -8,7 +8,6 @@
         withOpenASAR = false;
         withVencord = true;
       })
-#      teams-for-linux
       localsend
       rustdesk-flutter
     ];

@@ -18,9 +18,6 @@
         executable = "${pkgs.signal-desktop}/bin/signal-desktop";
         profile = "${pkgs.firejail}/etc/firejail/signal-desktop.profile";
       };
-#      teams-for-linux = {
-#        executable = "${pkgs.teams-for-linux}/bin/teams-for-linux";
-#        profile = "${pkgs.firejail}/etc/firejail/teams-for-linux.profile";
 #      };
       
       # Office
