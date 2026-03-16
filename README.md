@@ -123,6 +123,26 @@
 
 ---
 
+## 🎛️ Cockpit
+
+I wanted a single place to control what gets installed — no digging through module files to enable or disable something. The `configuration.nix` acts as a central control panel where every feature is a simple `true`/`false` toggle.
+
+Main toggles enable entire categories, sub-toggles control individual components:
+```nix
+# One toggle for all pentesting tools
+cybersec.enable = true;
+  cybersec.recon.enable = true;
+  cybersec.wireless.enable = false;  # don't need this today
+  cybersec.forensics.enable = true;
+
+# Or disable a whole section at once
+gaming.enable = false;
+```
+
+This way I can spin up a minimal system for travel or a full pentesting workstation — same config, different toggles.
+
+---
+
 ## 🚀 Usage
 
 ```bash
