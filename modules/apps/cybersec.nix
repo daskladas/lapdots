@@ -1,149 +1,174 @@
-{ pkgs, ... }:
+{ lib, config, pkgs, ... }:
+let
+  cfg = config.cybersec;
+in
 {
-  environment.systemPackages = with pkgs; [
-    
-    # === RECONNAISSANCE ===
-    nmap              # Network port scanner
-    masscan           # Fast port scanner
-    rustscan          # Ultra-fast port scanner
-    amass             # Subdomain enumeration
-    subfinder         # Subdomain discovery
-    fierce            # DNS reconnaissance
-    dnsrecon          # DNS enumeration
-    dnsenum           # DNS information gathering
-    theharvester      # Email/domain OSINT
-    sherlock          # Username search across platforms
-    nuclei            # Fast vulnerability scanner based on YAML templates
-    feroxbuster       # Recursive content discovery
-    dnsx              # Multi-purpose dns scanner
-    waybackurls       # Fetcher for Wayback-Machine
-    qsreplace         # Replace query string values in URLs    
+  options.cybersec = {
+    enable = lib.mkEnableOption "pentesting toolkit";
+    recon.enable = lib.mkEnableOption "reconnaissance tools (nmap, amass, subfinder...)";
+    web.enable = lib.mkEnableOption "web application testing (burpsuite, sqlmap, ffuf...)";
+    code-scanning.enable = lib.mkEnableOption "code and secret scanning (gitleaks, semgrep...)";
+    osint.enable = lib.mkEnableOption "OSINT tools (exiftool, holehe, sherlock...)";
+    active-directory.enable = lib.mkEnableOption "Active Directory tools (bloodhound, netexec...)";
+    mobile.enable = lib.mkEnableOption "mobile security tools (frida, apkleaks...)";
+    network.enable = lib.mkEnableOption "network analysis (wireshark, tcpdump, bettercap...)";
+    wireless.enable = lib.mkEnableOption "wireless attack tools (aircrack-ng, wifite2...)";
+    crypto.enable = lib.mkEnableOption "crypto and steganography (steghide, hashcat...)";
+    voip.enable = lib.mkEnableOption "VoIP testing (sipvicious, sipp)";
+    passwords.enable = lib.mkEnableOption "password cracking (hashcat, john, seclists...)";
+    privesc.enable = lib.mkEnableOption "privilege escalation tools";
+    forensics.enable = lib.mkEnableOption "forensics and data recovery (scalpel, ddrescue...)";
+    exploitation.enable = lib.mkEnableOption "exploitation frameworks (metasploit, mimikatz...)";
+    reversing.enable = lib.mkEnableOption "reverse engineering (ghidra, radare2, gdb...)";
+    enumeration.enable = lib.mkEnableOption "SMB/Windows enumeration (enum4linux, smbmap)";
+    utilities.enable = lib.mkEnableOption "pentesting utilities (netcat, socat, openvpn...)";
+  };
 
-    # === WEB APPLICATION TESTING ===
-    burpsuite         # Web vulnerability scanner/proxy
-    sqlmap            # SQL injection tool
-    nikto             # Web server scanner
-    wpscan            # WordPress vulnerability scanner
-    dirb              # Web directory brute-forcer
-    gobuster          # Directory/DNS brute-forcer
-    ffuf              # Fast web fuzzer
-    arjun             # HTTP parameter discovery
-    commix            # Command injection exploiter
-    whatweb	      # Web Scanner
-    wafw00f	      # Scanner for WAF
-    joomscan	      # Scanner for Joomla
-    httpx             # Muli-purpose HTTP toolkit
-    katana 	      # Next-gen web crawler
-    dalfox            # Parameter analysis and XSS scanning tool
-    crlfuzz           # CRLF vulnerability scanner
-    jaeles            # Automated web application testing framework
-
-    # === CODE/SECRET SCANNING ===
-    gitleaks          # Scan git repos for secrets
-    trufflehog        # Find credentials in git repositories
-    semgrep           # Lightweight static analysis for many languages
-    detect-secrets    # Enterprise tool for preventing secrets in code
-    git-secrets       # Prevents committing secrets to git repos
-    whispers          # Identify hardcoded secrets in static structured text
-    gitjacker         # Hijack traffic from vulnerable .git folders
-    git-dumper        # Tool to dump git repos from websites  
-   
-    # === OSINT ===
-    exiftool          # Read/write metadata from files
-    holehe            # Check if email exists on 120+ sites
-    socialscan        # Check email/username availability on platforms
-    ghunt             # Investigate Google accounts with emails
-
-    # === ACTIVE DIRECTORY ===
-    bloodhound        # AD attack path analysis
-    netexec           # fork of CrackMapExec
-    kerbrute          # Kerberos bruteforce
-    coercer           # Windows hosts to authenticate to attacker
-    adidnsdump        # Dump AD Integrated DNS records
-    ldapdomaindump    # Dump domain information via LDAP
-    donpapi	      # Dump secrets using DPAPI
-
-    # === MOBILE ===
-    frida-tools       # Dynamic instrumentation toolkit
-    apkleaks          # Scanning APK files for URIs, endpoints & secrets
-    python313Packages.pip       # python 3 language
-    android-tools     # needed for rooting phones
-    aria2             # download ROMs for rooting phones  
-
-    # === NETWORK ANALYSIS ===
-    wireshark         # Network protocol analyzer
-    tcpdump           # Packet capture tool
-    ettercap          # Network MITM framework
-    bettercap         # Network attack/monitoring
-    responder         # LLMNR/NBT-NS poisoner
-    proxychains       # Route connections through proxy chains
-    macchanger        # MAC-Adress spoofer
-    arping	      # Broadcast who arp answers
-    netdiscover       # Simple ARP
-    
-    # === WIRELESS ATTACKS ===
-    aircrack-ng       # WiFi security testing suite
-    wifite2           # Automated WiFi attack tool
-    reaverwps-t6x     # WPS attack tool
-    kismet            # Wireless network detector
-    hostapd-mana      # Rogue access point
-    horst             # Wireless 802.11 network monitor
-    mdk4              # Wireless fuzzing/testing tool
-    pixiewps          # WPS Pixie Dust attack    
-  
-    # === CRYPTO & STEGANOGRAPHY ===
-    steghide          # Hide data in images/audio
-    stegseek          # Steghide password cracker
-    zsteg             # Detect stegano-hidden data in PNG/BMP
-    stegsolve         # Steganography analysis tool with filters
-    haiti             # Hash type identifier (modern)
-    
-    # === VOIP TESTING ===  
-    sipvicious        # SIP protocol security tools
-    sipp              # SIP protocol traffic generator
-
-    # === PASSWORD CRACKING ===
-    hashcat           # GPU-accelerated password cracker
-    john              # CPU-based password cracker
-    crunch            # Wordlist generator
-    cewl              # Custom wordlist from websites
-    chntpw            # Windows Password Editor
-    samdump2          # Dump password hashes by NT/XP
-    seclists          # Collection of multiple types of security wordlists
-    payloadsallthethings # List of useful payloads and bypasses
-
-    # === PRIVILEGE ESCALATION ===
-    linux-exploit-suggester  # Suggest exploits based on Linux kernel version
-    traitor                  # Automatic linux privilege escalator
-
-    # === FORENSICS & DATA RECOVERY ===
-    scalpel           # Fast file carving tool
-    dcfldd	      # Enhanced dd for forensics
-    ddrescue          # Data recovery from failing drives
-
-    # === EXPLOITATION ===
-    metasploit        # Exploitation framework
-    exploitdb         # Exploit database
-    mimikatz          # Windows credential dumper
-    
-    # === REVERSE ENGINEERING ===
-    ghidra            # Software reverse engineering suite
-    radare2           # Reverse engineering framework
-    gdb               # GNU debugger
-    ltrace            # Library call tracer
-    strace            # System call tracer
-    binwalk           # Firmware analysis tool
-    hexedit           # Terminal hex editor
-
-    # === ENUMERATION ===
-    enum4linux        # SMB/Windows enumeration
-    smbmap            # SMB share enumerator
-    
-    # === UTILITIES ===
-    netcat            # Network connection utility
-    socat             # Bidirectional data relay
-    openvpn           # VPN client
-    testssl           # TLS/SSL security tester
-    brave             # Privacy-focused browser
-  ];
+  config = lib.mkIf cfg.enable {
+    environment.systemPackages = with pkgs;
+      lib.optionals cfg.recon.enable [
+        nmap
+        masscan
+        rustscan
+        amass
+        subfinder
+        fierce
+        dnsrecon
+        dnsenum
+        theharvester
+        nuclei
+        feroxbuster
+        dnsx
+        waybackurls
+        qsreplace
+      ]
+      ++ lib.optionals cfg.web.enable [
+        burpsuite
+        sqlmap
+        nikto
+        wpscan
+        dirb
+        gobuster
+        ffuf
+        arjun
+        commix
+        whatweb
+        wafw00f
+        joomscan
+        httpx
+        katana
+        dalfox
+        crlfuzz
+        jaeles
+      ]
+      ++ lib.optionals cfg.code-scanning.enable [
+        gitleaks
+        trufflehog
+        semgrep
+        detect-secrets
+        git-secrets
+        whispers
+        gitjacker
+        git-dumper
+      ]
+      ++ lib.optionals cfg.osint.enable [
+        exiftool
+        holehe
+        socialscan
+        ghunt
+        sherlock
+      ]
+      ++ lib.optionals cfg.active-directory.enable [
+        bloodhound
+        netexec
+        kerbrute
+        coercer
+        adidnsdump
+        ldapdomaindump
+        donpapi
+      ]
+      ++ lib.optionals cfg.mobile.enable [
+        frida-tools
+        apkleaks
+        python313Packages.pip
+        android-tools
+        aria2
+      ]
+      ++ lib.optionals cfg.network.enable [
+        wireshark
+        tcpdump
+        ettercap
+        bettercap
+        responder
+        proxychains
+        macchanger
+        arping
+        netdiscover
+      ]
+      ++ lib.optionals cfg.wireless.enable [
+        aircrack-ng
+        wifite2
+        reaverwps-t6x
+        kismet
+        hostapd-mana
+        horst
+        mdk4
+        pixiewps
+      ]
+      ++ lib.optionals cfg.crypto.enable [
+        steghide
+        stegseek
+        zsteg
+        stegsolve
+        haiti
+      ]
+      ++ lib.optionals cfg.voip.enable [
+        sipvicious
+        sipp
+      ]
+      ++ lib.optionals cfg.passwords.enable [
+        hashcat
+        john
+        crunch
+        cewl
+        chntpw
+        samdump2
+        seclists
+        payloadsallthethings
+      ]
+      ++ lib.optionals cfg.privesc.enable [
+        linux-exploit-suggester
+        traitor
+      ]
+      ++ lib.optionals cfg.forensics.enable [
+        scalpel
+        dcfldd
+        ddrescue
+      ]
+      ++ lib.optionals cfg.exploitation.enable [
+        metasploit
+        exploitdb
+        mimikatz
+      ]
+      ++ lib.optionals cfg.reversing.enable [
+        ghidra
+        radare2
+        gdb
+        ltrace
+        strace
+        binwalk
+        hexedit
+      ]
+      ++ lib.optionals cfg.enumeration.enable [
+        enum4linux
+        smbmap
+      ]
+      ++ lib.optionals cfg.utilities.enable [
+        netcat
+        socat
+        openvpn
+        testssl
+        brave
+      ];
+  };
 }

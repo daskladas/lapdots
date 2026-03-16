@@ -47,4 +47,24 @@
   security.integrity.enable = true;
   security.usb.enable = true;
   security.hardening.enable = true;
+
+  # Pentesting
+  cybersec.enable = true;
+  cybersec.recon.enable = true;
+  cybersec.web.enable = true;
+  cybersec.code-scanning.enable = true;
+  cybersec.osint.enable = true;
+  cybersec.active-directory.enable = true;
+  cybersec.mobile.enable = true;
+  cybersec.network.enable = true;
+  cybersec.wireless.enable = true;
+  cybersec.crypto.enable = true;
+  cybersec.voip.enable = true;
+  cybersec.passwords.enable = true;
+  cybersec.privesc.enable = true;
+  cybersec.forensics.enable = true;
+  cybersec.exploitation.enable = true;
+  cybersec.reversing.enable = true;
+  cybersec.enumeration.enable = true;
+  cybersec.utilities.enable = true;
 }
