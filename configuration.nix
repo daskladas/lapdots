@@ -37,4 +37,5 @@
   apps.browsing.enable = true;
   apps.communication.enable = true;
   apps.media.enable = true;
+  apps.filemanager.enable = true;
 }

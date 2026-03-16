@@ -1,51 +1,58 @@
-{ pkgs, username, ... }:
-
+{ lib, config, pkgs, username, ... }:
+let
+  cfg = config.apps.filemanager;
+in
 {
-  environment.systemPackages = with pkgs; [
-    nautilus
-    file-roller
-  ];
+  options.apps.filemanager = {
+    enable = lib.mkEnableOption "file manager (Nautilus with bookmarks and dconf)";
+  };
 
-  services.gvfs.enable = true;
+  config = lib.mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [
+      nautilus
+      file-roller
+    ];
+    services.gvfs.enable = true;
 
-  home-manager.users.${username} = {
-    dconf.settings = {
-      "org/gnome/nautilus/preferences" = {
-        default-folder-viewer = "list-view";
-        show-hidden-files = true;
+    home-manager.users.${username} = {
+      dconf.settings = {
+        "org/gnome/nautilus/preferences" = {
+          default-folder-viewer = "list-view";
+          show-hidden-files = true;
+        };
+        "org/gnome/nautilus/list-view" = {
+          default-zoom-level = "small";
+          use-tree-view = true;
+        };
+        "org/gtk/gtk4/settings/file-chooser" = {
+          show-hidden = true;
+          sort-directories-first = true;
+          view-type = "list";
+        };
       };
-      "org/gnome/nautilus/list-view" = {
-        default-zoom-level = "small";
-        use-tree-view = true;
+
+      xdg.userDirs = {
+        enable = true;
+        createDirectories = true;
+        music = null;
+        videos = null;
+        templates = null;
+        publicShare = null;
       };
-      "org/gtk/gtk4/settings/file-chooser" = {
-        show-hidden = true;
-        sort-directories-first = true;
-        view-type = "list";
+
+      xdg.mimeApps.defaultApplications = {
+        "inode/directory" = "org.gnome.Nautilus.desktop";
       };
-    };
 
-    xdg.userDirs = {
-      enable = true;
-      createDirectories = true;
-      music = null;
-      videos = null;
-      templates = null;
-      publicShare = null;
+      xdg.configFile."gtk-3.0/bookmarks".text = ''
+        file:///etc/nixos NixOS Config
+        file:///home/${username}/Downloads Downloads
+        file:///home/${username}/Documents Dokumente
+        file:///home/${username}/Pictures Bilder
+        file:///home/${username}/.config Config
+        file:///tmp Temp
+        file:///mnt Mounts
+      '';
     };
-
-    xdg.mimeApps.defaultApplications = {
-      "inode/directory" = "org.gnome.Nautilus.desktop";
-    };
-
-    xdg.configFile."gtk-3.0/bookmarks".text = ''
-      file:///etc/nixos NixOS Config
-      file:///home/${username}/Downloads Downloads
-      file:///home/${username}/Documents Dokumente
-      file:///home/${username}/Pictures Bilder
-      file:///home/${username}/.config Config
-      file:///tmp Temp
-      file:///mnt Mounts
-    '';
   };
 }
