@@ -34,4 +34,5 @@
   apps.creative.enable = true;
   apps.office.enable = true;
   apps.entertainment.enable = true;
+  apps.browsing.enable = true;
 }
