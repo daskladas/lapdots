@@ -43,4 +43,5 @@
 
   # Security
   security.sandboxing.enable = true;
+  security.antivirus.enable = true;
 }
