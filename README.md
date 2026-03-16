@@ -48,6 +48,11 @@
   <img src="assets/flake-structure.svg" width="100%" />
 </p>
 
+The diagram shows how the config flows from top to bottom. Six flake inputs (nixpkgs, home-manager, agenix, lanzaboote, spicetify, stylix) feed into `flake.nix`, which passes everything down to `configuration.nix` — the cockpit. From there, three branches split off: `host/` for machine-specific hardware, `modules/` for all features, and `users/` for per-user settings.
+
+Inside `modules/`, each category (apps, dev, security, hardware...) contains individual `.nix` files. The ◉ indicator marks modules that can be toggled on or off directly from the cockpit — no need to touch the module files themselves. Modules marked with ● are always active (core, desktop). The cybersec module has 18 sub-toggles so I can pick exactly which toolsets I need for a given job.
+
+
 <details>
 <summary>File tree</summary>
 
