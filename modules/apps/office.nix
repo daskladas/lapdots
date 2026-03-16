@@ -1,11 +1,20 @@
-{ pkgs, username, ... }:
+{ lib, config, pkgs, username, ... }:
+let
+  cfg = config.apps.office;
+in
 {
-  environment.systemPackages = with pkgs; [
-    libreoffice-still
-  ];
+  options.apps.office = {
+    enable = lib.mkEnableOption "office apps (LibreOffice, OnlyOffice, Zathura)";
+  };
 
-  home-manager.users.${username}.programs = {
-    onlyoffice.enable = true;
-    zathura.enable = true;
+  config = lib.mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [
+      libreoffice-still
+    ];
+
+    home-manager.users.${username}.programs = {
+      onlyoffice.enable = true;
+      zathura.enable = true;
+    };
   };
 }
