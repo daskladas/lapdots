@@ -1,17 +1,24 @@
-{ pkgs, username, ... }:
+{ lib, config, pkgs, username, ... }:
+let
+  cfg = config.apps.communication;
+in
 {
-  home-manager.users.${username} = {
-    home.packages = with pkgs; [
-      tutanota-desktop
-      signal-desktop
-      (discord.override {
-        withOpenASAR = false;
-        withVencord = true;
-      })
-      localsend
-      rustdesk-flutter
-    ];
+  options.apps.communication = {
+    enable = lib.mkEnableOption "communication apps (Signal, Discord, Tutanota, LocalSend)";
+  };
 
-    # Teams config
+  config = lib.mkIf cfg.enable {
+    home-manager.users.${username} = {
+      home.packages = with pkgs; [
+        tutanota-desktop
+        signal-desktop
+        (discord.override {
+          withOpenASAR = false;
+          withVencord = true;
+        })
+        localsend
+        rustdesk-flutter
+      ];
+    };
   };
 }

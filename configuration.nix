@@ -35,4 +35,5 @@
   apps.office.enable = true;
   apps.entertainment.enable = true;
   apps.browsing.enable = true;
+  apps.communication.enable = true;
 }
