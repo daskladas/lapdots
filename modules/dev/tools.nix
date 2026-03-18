@@ -4,7 +4,7 @@ let
 in
 {
   options.dev.tools = {
-    enable = lib.mkEnableOption "development tools (VSCodium, Neovim, Git, Cargo, Python)";
+    enable = lib.mkEnableOption "development tools (VSCodium, Neovim, Cargo, Python, Node.js)";
   };
 
   config = lib.mkIf cfg.enable {
@@ -12,22 +12,11 @@ in
       neovim
       cargo
       openssl
-      python314
+      python315
+      nodejs_25
     ];
 
     home-manager.users.${username} = {
-      programs.git = {
-        enable = true;
-        settings = {
-          user = {
-            name = "daskladas";
-            email = "xvzrsm@tutanota.de";
-          };
-          init.defaultBranch = "main";
-          pull.rebase = false;
-        };
-      };
-
       programs.vscode = {
         enable = true;
         package = pkgs.vscodium;

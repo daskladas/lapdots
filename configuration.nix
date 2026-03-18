@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, username, ... }:
 {
   imports = [
     # Flake modules
@@ -27,6 +27,30 @@
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
+
+  # ── Basics (always installed) ───────────────
+  environment.systemPackages = with pkgs; [
+    wget
+    curl
+    htop
+    tree
+    file
+    which
+    ripgrep
+    zip
+    unzip
+    p7zip
+  ];
+
+  home-manager.users.${username}.programs.git = {
+    enable = true;
+    settings = {
+      user.name = "daskladas";
+      user.email = "xvzrsm@tutanota.de";
+      init.defaultBranch = "main";
+      pull.rebase = false;
+    };
+  };
 
   # ── Hardware ──────────────────────────────────
   hw.gpu               = { enable = true; brand = "intel"; };
