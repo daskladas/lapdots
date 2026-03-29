@@ -5,7 +5,7 @@
   ...
 }:
 {
-  home-manager.users.${username} = {
+  home-manager.users.${username} = { lib, ... }: {	
     home.file.".face.icon".source = ./profile01.png; # Profilbild
     programs.hyprpanel = {
       enable = true;
@@ -15,14 +15,9 @@
     left = [
       "dashboard"
       "workspaces"
-      "cpu"
-      "ram"
-      "netstat"
     ];
     middle = [ "clock" ];
     right = [
-      "media"
-      "volume"
       "battery"
       "network"
       "bluetooth"
@@ -45,6 +40,18 @@
       "network"
       "bluetooth"
       "systray"
+      "notifications"
+    ];
+  };
+  "2" = {
+    left = [
+      "dashboard"
+      "workspaces"
+    ];
+    middle = [ "clock" ];
+    right = [
+      "media"
+      "volume"
       "notifications"
     ];
   };
@@ -443,5 +450,15 @@
         theme.bar.buttons.modules.worldclock.border = "#d3869b";
       };
     };
+
+    home.activation.hyprpanelConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      CONFIG="$HOME/.config/hyprpanel/config.json"
+      if [ -L "$CONFIG" ]; then
+        REAL=$(readlink -f "$CONFIG")
+        rm "$CONFIG"
+        cp "$REAL" "$CONFIG"
+        chmod 644 "$CONFIG"
+      fi
+    '';
   };
 }

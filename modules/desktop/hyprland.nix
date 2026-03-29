@@ -6,7 +6,6 @@ in
     gammastep # Blaulichtfilter
     swayidle # Screensaver with Pipes
     pipes-rs # Screensaver with Pipes
-    numlockx # Nummernblock autom. aktivieren
     zenity   # GUI dialog 
     ffmpeg   # Thumbnail generation
     libnotify # Noficitaion
@@ -97,9 +96,9 @@ in
       ".config/hypr/hyprland.conf".text = ''
         # ---- Common Configuration ---- #
         # ── Monitor Setup ──
-        monitor = eDP-1, 1920x1080@60, 3840x0, 1
-        monitor = DP-5, 1920x1080@240, 0x0, 1
-        monitor = DP-6, 1920x1080@240, 1920x0, 1
+        monitor = eDP-1, 1920x1080@60, 0x0, 1
+        monitor = DP-5, 1920x1080@240, 1920x0, 1
+        monitor = DP-6, 1920x1080@144, 3840x0, 1 
         workspace = 1, monitor:eDP-1, default:true
         workspace = 4, monitor:eDP-1
         workspace = 2, monitor:DP-5, default:true

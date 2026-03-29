@@ -42,6 +42,9 @@ in
 
         # Bison Webcam (internal)
         allow id 5986:*
+
+        # Astro A50 Headset
+        allow id 9886:002c
       '';
     };
 

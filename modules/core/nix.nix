@@ -5,6 +5,9 @@
   home-manager.users.${username} = {
     home.stateVersion = "23.11";
     dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+    gtk.gtk4.theme = null;
+    xdg.userDirs.setSessionVariables = false;
+    programs.git.signing.format = null;
   };
 
   # ── Nix Package & Path ──
